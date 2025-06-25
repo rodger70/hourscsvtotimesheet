@@ -1,9 +1,0 @@
-com/github/rodger70/hourscsvtotimesheet/CSVLexer.class
-com/github/rodger70/hourscsvtotimesheet/CSVBaseListener.class
-com/github/rodger70/hourscsvtotimesheet/Main.class
-com/github/rodger70/hourscsvtotimesheet/CSVParser$RowContext.class
-com/github/rodger70/hourscsvtotimesheet/CSVParser.class
-com/github/rodger70/hourscsvtotimesheet/App.class
-com/github/rodger70/hourscsvtotimesheet/CSVListener.class
-com/github/rodger70/hourscsvtotimesheet/CSVParser$FileContext.class
-com/github/rodger70/hourscsvtotimesheet/CSVParser$ValueContext.class
