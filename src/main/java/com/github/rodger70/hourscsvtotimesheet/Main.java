@@ -33,15 +33,16 @@ public class Main {
     Main main = new Main(args);
 
     if (args.length == 0) {
-      System.out.println("Usage: java -jar hourscsvtotimesheet.jar [-o outputdir] <csv-file1> <csv-file2> ...");
+      System.out.println(
+          "Usage: java -jar hourscsvtotimesheet.jar [-o outputdir] <csv-file1> <csv-file2> ...");
       return;
     }
 
     main.run();
   }
 
-	private final String[] args;
-	private List<String> files = new ArrayList<String>();
+  private final String[] args;
+  private List<String> files = new ArrayList<String>();
 
   /**
    * Constructor for the Main class.
@@ -52,7 +53,7 @@ public class Main {
     // Constructor can be used for initialization if needed
     this.args = args;
 
-    handleArgs();    
+    handleArgs();
   }
 
   private String outputDirectory = "."; // Default output directory is the current directory
@@ -65,8 +66,8 @@ public class Main {
     int i = 0;
 
     while (args != null && i < args.length) {
-			String arg = args[i];
-			i++;
+      String arg = args[i];
+      i++;
 
       if (arg.startsWith("-o")) { // output directory
         outputDirectory = args[i];
@@ -75,12 +76,13 @@ public class Main {
         files.add(arg);
       }
     }
- }
+  }
 
- /**
+  /**
    * Runs the main logic of the application.
    * 
-   * This method processes each CSV file, parses it, populates tasks, and exports them to CSV format.
+   * This method processes each CSV file, parses it, populates tasks, and exports them to CSV
+   * format.
    */
   private void run() {
     try {
@@ -136,7 +138,7 @@ public class Main {
     Date date = dayMonthYearSdf.parse(data.get(1).get(0).split(" to ")[0].trim());
     // TODO: use LocalDate for better date handling
     int year = date.getYear() + 1900; // Adjust for Java's year offset
-    
+
     // Set the previous date to the start date
     // This will be used to track the last date processed
     Date previousDate = date;
@@ -231,9 +233,9 @@ public class Main {
     for (int i = 0; i < tasks.size(); i++) {
       Task task = tasks.get(i);
 
-      long fourWeekPeriod = ChronoUnit.WEEKS.between(LocalDate.of(1970, 1, 5), // Start week date
-                                                                               // (1970-01-05 is a
-                                                                               // Monday)
+      long fourWeekPeriod = ChronoUnit.WEEKS.between(LocalDate.of(1970, 1, 19), // Start week date
+                                                                                // (1970-01-19 is a
+                                                                                // Monday)
           task.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()) / 4;
 
       if (fourWeekPeriod != previousFourWeekPeriod) {
@@ -246,7 +248,8 @@ public class Main {
 
         // Open a new output stream for the new four-week period
         // out = System.out;
-        String filename = outputDirectory + "/"
+        String filename =
+            outputDirectory + "/"
                 + DateTimeFormatter.ofPattern("yyyy-MM-dd")
                     .format(task.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate())
                 + ".csv";
